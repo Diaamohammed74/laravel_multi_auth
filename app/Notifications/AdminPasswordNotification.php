@@ -36,9 +36,9 @@ class AdminPasswordNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('يحرق ام الانسان ع الصبح')
-                    ->action('غير الباسوورد من هنا ', url('/back/reset-password',$this->token,$this->email))
-                    ->line('غور');
+                    ->line('Reset password')
+                    ->action(' Reset password', url('/back/reset-password',$this->token,$this->email))
+                    ->line('thanks');
     }
 
     /**
