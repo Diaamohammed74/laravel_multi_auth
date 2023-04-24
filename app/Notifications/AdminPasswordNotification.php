@@ -37,7 +37,7 @@ class AdminPasswordNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Reset password')
-                    ->action(' Reset password', url('/back/reset-password',$this->token,$this->email))
+                    ->action(' Reset password', url("/back/reset-password/{$this->token}?email={$this->email}"))
                     ->line('thanks');
     }
 

@@ -45,5 +45,4 @@
 
     @include('back.partials.scripts')
 </body>
-
 </html>
