@@ -14,6 +14,10 @@ class Admin extends Authenticatable implements CanResetPassword
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new AdminPasswordNotification($token,$this->email));
+    }
     /**
      * The attributes that are mass assignable.
      *
