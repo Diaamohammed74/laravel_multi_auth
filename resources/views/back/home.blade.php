@@ -1,5 +1,5 @@
-@extends('front.master')
-@section('title','Front|Home')
+@extends('back.master')
+@section('title','Admin|Home')
 @section('content')
     <div class="row">
         <div class="col-lg-8 mb-4 order-0">
