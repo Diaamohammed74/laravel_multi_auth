@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Validated;
 
 class AdminController extends Controller
 {
@@ -11,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('back.admins.index');
+        $admins=Admin::get();
+        return view('back.admins.index',compact('admins'));
     }
 
     /**
@@ -19,7 +24,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        $roles=Role::where('guard_name','admin')->get();
+        return view('back.admins.create',compact('roles'));
     }
 
     /**
@@ -27,7 +33,23 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //assignRole to assign role to admin 
+        $data=$request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+            'role'=>'required',
+        ]);
+        $password=Hash::make($data['password']);
+        $admin=Admin::create([
+            'name'=>$data['name'],
+            'email'=>$data['email'],
+            'password'=>$password,
+        ]);
+        if (isset($data['role'])) {
+            $admin->assignRole($data['role']);
+        }
+        return back()->with('success','Added Successfuly');
     }
 
     /**

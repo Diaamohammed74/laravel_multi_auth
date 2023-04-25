@@ -16,6 +16,8 @@ Route::prefix('back')->name('back.')->group(function () {
 
         Route::prefix('/admin')->name('admins.')->controller(AdminController::class)->group(function(){
             Route::get('/index','index')->name('index');
+            Route::get('/create','create')->name('create');
+            Route::post('/store','store')->name('store');
         });
         Route::prefix('/roles')->name('roles.')->controller(RoleController::class)->group(function(){
             Route::get('/index','index')->name('index');
