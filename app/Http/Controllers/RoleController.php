@@ -10,7 +10,7 @@ class RoleController extends Controller
 {
     function __construct(){
         $this->middleware('CheckPermission:add_role')->only(['create','store']);
-        $this->middleware('CheckPermission:edit_role')->only(['edit','update']);
+        // $this->middleware('CheckPermission:edit_role')->only(['edit','update']);
     }
     /**
      * Display a listing of the resource.

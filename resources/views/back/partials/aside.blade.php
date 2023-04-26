@@ -21,25 +21,25 @@
         <li class="menu-item ">
             <a href="{{route('back.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics">{{__('lang.Dashboard')}}</div>
             </a>
         </li>
         <li class="menu-item ">
             <a href="{{route('back.admins.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Admins</div>
+                <div data-i18n="Analytics">{{__('lang.Admins')}}</div>
             </a>
         </li>
         <li class="menu-item ">
             <a href="{{route('back.roles.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Roles</div>
+                <div data-i18n="Analytics">{{__('lang.Roles')}}</div>
             </a>
         </li>
         <li class="menu-item ">
             <a href="index.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Users</div>
+                <div data-i18n="Analytics">{{__('lang.Users')}}</div>
             </a>
         </li>
 
