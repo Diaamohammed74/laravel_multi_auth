@@ -6,9 +6,9 @@
             <script>
                 document.write(new Date().getFullYear());
             </script>
-            , made with ❤️ by
+            , made by
             <a href="https://themeselection.com" target="_blank"
-                class="footer-link fw-bolder">ThemeSelection</a>
+                class="footer-link fw-bolder">Diaa Mohammed</a>
         </div>
         <div>
             <a href="https://themeselection.com/license/" class="footer-link me-4"
