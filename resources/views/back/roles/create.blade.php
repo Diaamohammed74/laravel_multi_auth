@@ -26,6 +26,7 @@
                         <input type="text" class="border form-control" name="name"
                             placeholder="please enter role name">
                     </div>
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     <div class="form-group col-12 mt-2">
                         <div class="row">
                             @if (count($permissions) > 0)

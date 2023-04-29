@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RoleRequest;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -33,9 +34,9 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-        $data = $request;
+        $data = $request->validated();
         $role = Role::create(['name' => $data['name'], 'guard_name' => 'admin']);
         if (isset($data['permissionArray'])) {
             foreach ($data['permissionArray'] as $permission => $value) {
@@ -66,12 +67,9 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $role_id)
+    public function update(RoleRequest $request, $role_id)
     {
-        $data = $request->validate([
-            'name' => 'required|unique:roles,name,'.$role_id,
-            'permissionArray.*' => 'nullable',
-        ]);
+        $data = $request->validated();
         $role = Role::findOrFail($role_id);
         $role->name = $data['name'];
         $role->save();

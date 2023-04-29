@@ -5,10 +5,12 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BackHomeController;
 use App\Http\Controllers\FrontHomeController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::get('/',FrontHomeController::class)->middleware('auth')->name('index');
 
 require __DIR__.'/auth.php';
+
 
 
 Route::prefix('back')->name('back.')->group(function ()
