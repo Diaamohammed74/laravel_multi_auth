@@ -2,45 +2,35 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Models\Admin;
+use Illuminate\View\View;
+use App\Http\Requests\userRegister;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
+
     public function create(): View
     {
         return view('front.auth.register');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(userRegister $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', Rules\Password::defaults()],
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
+        $data=$request->validated();
+        $data['password']=Hash::make($data['password']);
+        $user = User::create($data);
 
         Auth::login($user);
 
-        return to_route('index');
+        return to_route('/front.index');
+
+        // event(new Registered($user));
+
     }
 }

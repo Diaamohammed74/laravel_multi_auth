@@ -2,9 +2,14 @@
 
 namespace App\Http\Requests;
 
+use Rules\Password;
+use App\Models\User;
+
+use App\Rules\NameRule;
+use Illuminate\Validation\Rules;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminRequest extends FormRequest
+class userRegister extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,20 +27,16 @@ class AdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'photo' => 'required|file|image|mimes:png,jpg',
-            'email' => 'required',
-            'password' => 'required',
-            'role' => 'required',
+            'name' => ['required', 'string', 'max:255',new NameRule],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required',Rules\Password::defaults()],
         ];
     }
     public function attributes(): array
-{
-    return [
-        'email' => 'Email address',
-        'name' => 'Name',
-        'password' => 'Password',
-        'role' => 'Role',
-    ];
-}
+    {
+        return [
+            'name' => 'User Name',
+            'password' =>'Password',
+        ];
+    }
 }

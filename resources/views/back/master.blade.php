@@ -8,9 +8,9 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
 
-            <!-- Menu -->
+            <!-- aside -->
             @include('back.partials.aside')
-            <!-- / Menu -->
+            <!-- / aside -->
 
             <!-- Layout container -->
             <div class="layout-page">

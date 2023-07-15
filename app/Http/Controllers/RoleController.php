@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoleRequest;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
     function __construct(){
-        $this->middleware('CheckPermission:add_role')->only(['create','store']);
+        // $this->middleware('CheckPermission:add_role')->only(['create','store']);
         // $this->middleware('CheckPermission:edit_role')->only(['edit','update']);
     }
     /**
@@ -27,6 +28,7 @@ class RoleController extends Controller
      */
     public function create()
     {
+        // $guard=Auth::guard()->name;
         $permissions=Permission::where('guard_name','admin')->get();
         return view('back.roles.create',compact("permissions"));
     }

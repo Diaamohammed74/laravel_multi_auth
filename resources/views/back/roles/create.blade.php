@@ -33,11 +33,8 @@
                                 @foreach ($permissions as $permission)
                                     <div class="col-md-6">
                                         <div class="form-check form-check-primary mt-1">
-                                            <input class="form-check-input" type="checkbox"
-                                                name="permissionArray[{{ $permission->name }}]"
-                                                id="formCheckcolor{{ $permission->id }}">
-                                            <label class="form-check-label"
-                                                for="formCheckcolor{{ $permission->id }}">{{ $permission->name }}</label>
+                                            <input class="form-check-input" type="checkbox" name="permissionArray[{{ $permission->name }}]" id="formCheck{{ $permission->id }}">
+                                            <label class="form-check-label" for="formCheck{{ $permission->id }}">{{ $permission->name }}</label>
                                         </div>
                                     </div>
                                 @endforeach

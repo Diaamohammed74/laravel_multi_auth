@@ -5,13 +5,13 @@
     <div class="col-12">
         <div class="page-title-box d-flex align-items-center justify-content-between">
             <h2 class="h4 page-title">Roles</h2>
-            @if(permission('add_role'))
+            {{-- @if(permission('add_role')) --}}
             <div class="page-title-right">
                 <a href="{{ route('back.roles.create') }}" class="btn btn-primary">
                     Add New
                 </a>
             </div>
-            @endif
+            {{-- @endif --}}
         </div>
     </div>
 </div>

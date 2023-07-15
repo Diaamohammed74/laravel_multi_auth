@@ -24,19 +24,20 @@
                         <form id="formAuthentication" class="mb-3" action="{{route('register')}}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="name" :value="old('name')"
-                                    placeholder="Enter your username" autofocus  />
+                                <label for="username" class="form-label">{{ __('lang.Username') }}</label>
+                                <input data-parsley-type="text" class="form-control" id="username" name="name" value="{{old('name')}}"
+                                placeholder="{{ __('lang.name') }}" autofocus  />
                                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" :value="old('email')"
-                                    placeholder="Enter your email" />
-                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                <label for="email" class="form-label">{{ __('lang.email') }}</label>
+                                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}"
+                                    placeholder="{{ __('lang.email') }}" />
+                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
+                            
                             <div class="mb-3 form-password-toggle">
-                                <label class="form-label" for="password">Password</label>
+                                <label class="form-label" for="password">{{ __('lang.password') }}</label>
                                 <div class="input-group input-group-merge">
                                     <input type="password" id="password" class="form-control" name="password" 
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
@@ -46,7 +47,7 @@
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             </div>
 
-                            <button class="btn btn-primary d-grid w-100" type="submit">Sign up</button>
+                            <button class="btn btn-primary d-grid w-100" type="submit">{{ __('lang.sign up') }}</button>
                         </form>
 
                         <p class="text-center">
